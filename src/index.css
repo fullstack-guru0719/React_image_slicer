@@ -1,0 +1,19 @@
+main {
+  padding: 1rem;
+}
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.user {
+  border: 1px #404040 solid;
+  margin: 1rem;
+}
+.user img {
+  width: 100%;
+  max-width: 400px;
+}
+.user-info {
+  padding: 1rem;
+}
