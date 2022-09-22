@@ -10,7 +10,7 @@ function App() {
         <div className="users">
           {data.users.map((user) => (
             <div className="user" key={user.Route_ID}>
-              <Card onClick={test(user.Route_ID)}>
+              <Card>
                 <img src={user.URL} alt={user.Name} />
                 <div className="user-info">
                   <p>{user.Name}</p>
