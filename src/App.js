@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import data from './data';
-import Card from 'react-bootstrap/Card';
 
 function App() {
+  const [selected, setSelected] = useState();
+  const onClick = (routeId) => {
+    console.log('routeID:', routeId);
+    setSelected(routeId);
+  };
+
   return (
     <div>
       <header></header>
@@ -9,15 +15,31 @@ function App() {
         <h1>Image Slicer</h1>
         <div className="users">
           {data.users.map((user) => (
-            <div className="user" key={user.Route_ID}>
-              <Card>
+            <div
+              className={`user ${selected === user.Route_ID ? 'selected' : ''}`}
+              key={user.Route_ID}
+              onClick={() => onClick(user.Route_ID)}
+            >
+              <div className="card">
                 <img src={user.URL} alt={user.Name} />
                 <div className="user-info">
-                  <p>{user.Name}</p>
-                  <p>{user.Route_ID}</p>
-                  <p>{user.Freq}</p>
+                  <p>
+                    <strong>{user.Name}</strong>
+                  </p>
+                  <div className="user-detail">
+                    <p>Route {user.Route_ID}</p>
+                    <p className="user-route">| {user.Freq} Freq</p>
+                  </div>
                 </div>
-              </Card>
+                {selected === user.Route_ID ? (
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ_p8YoLPk4AYYhTj0ynX5dPX3GUTC5UWEx2mtCmo&s"
+                    className="checkmark"
+                  />
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
           ))}
         </div>

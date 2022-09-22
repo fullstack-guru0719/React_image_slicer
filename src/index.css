@@ -5,15 +5,51 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column;
+  width: fit-content;
+}
+.card {
+  padding: 12px 4px;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 .user {
-  border: 1px #404040 solid;
+  border-width: 0px;
+  border-radius: 4px;
+  background-color: #f2f2f2;
   margin: 1rem;
+  width: 350px;
+}
+.user.selected {
+  background-color: #e2f0d9;
+  border: 1px solid black;
 }
 .user img {
-  width: 100%;
-  max-width: 400px;
+  width: 100px;
+  height: 100%;
 }
 .user-info {
   padding: 1rem;
+}
+
+.user-info p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.user-info .user-detail {
+  display: flex;
+  color: #7c7c7c;
+}
+
+.user-info .user-route {
+  margin-left: 4px;
+}
+
+.user img.checkmark {
+  position: absolute;
+  right: 24px;
+  width: 36px;
+  height: auto;
 }
