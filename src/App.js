@@ -2,10 +2,15 @@ import { useState } from 'react';
 import data from './data';
 
 function App() {
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState(-1);
   const onClick = (routeId) => {
-    console.log('routeID:', routeId);
-    setSelected(routeId);
+    if (selected === routeId) {
+      console.log('routeID: none');
+      setSelected(-1);
+    } else {
+      setSelected(routeId);
+      console.log('routeID:', routeId);
+    }
   };
 
   return (
@@ -16,6 +21,7 @@ function App() {
         <div className="users">
           {data.users.map((user) => (
             <div
+              id="temp"
               className={`user ${selected === user.Route_ID ? 'selected' : ''}`}
               key={user.Route_ID}
               onClick={() => onClick(user.Route_ID)}
@@ -35,6 +41,7 @@ function App() {
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqCf-8YnNG8UbVsxsEdNRyD1DQrcQM4SgzxEZtnFw0rVoKnm285FpR_z6WAbayEOdYm4o"
                     className="checkmark"
+                    alt="checkBoxImg"
                   />
                 ) : (
                   <></>
